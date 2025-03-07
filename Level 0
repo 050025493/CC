@@ -1,1 +1,88 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+// Node structure for Doubly Linked List
+struct Node {
+    int data;
+    struct Node* prev;
+    struct Node* next;
+};
+
+// Function to create a new node
+struct Node* createNode(int data) {
+    struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
+    newNode->data = data;
+    newNode->prev = NULL;
+    newNode->next = NULL;
+    return newNode;
+}
+
+// Function to insert a node at the head
+void insertAtHead(struct Node** head, int data) {
+    struct Node* newNode = createNode(data);
+    if (*head == NULL) {
+        *head = newNode;
+        return;
+    }
+    newNode->next = *head;
+    (*head)->prev = newNode;
+    *head = newNode;
+}
+
+// Function to insert a node at the tail
+void insertAtTail(struct Node** head, int data) {
+    struct Node* newNode = createNode(data);
+    if (*head == NULL) {
+        *head = newNode;
+        return;
+    }
+    struct Node* temp = *head;
+    while (temp->next != NULL)
+        temp = temp->next;
+    temp->next = newNode;
+    newNode->prev = temp;
+}
+
+// Function to traverse the list forward
+void traverseForward(struct Node* head) {
+    struct Node* temp = head;
+    printf("Forward: ");
+    while (temp != NULL) {
+        printf("%d -> ", temp->data);
+        temp = temp->next;
+    }
+    printf("NULL\n");
+}
+
+// Function to traverse the list backward
+void traverseBackward(struct Node* head) {
+    if (head == NULL) return;
+    struct Node* temp = head;
+    
+    // Move to the last node
+    while (temp->next != NULL)
+        temp = temp->next;
+
+    printf("Backward: ");
+    while (temp != NULL) {
+        printf("%d -> ", temp->data);
+        temp = temp->prev;
+    }
+    printf("NULL\n");
+}
+
+// Main function
+int main() {
+    struct Node* head = NULL;
+
+    insertAtHead(&head, 10);
+    insertAtTail(&head, 20);
+    insertAtTail(&head, 30);
+    insertAtTail(&head, 40);
+    
+    traverseForward(head);
+    traverseBackward(head);
+
+    return 0;
+}
 
