@@ -34,7 +34,7 @@ void push(int value) {
     }
     printf("%d pushed to stack\n", value);
 }
-#pop finction to delete element from stack
+# function to delete element from stack
 int pop() {
     if (top == -1) {
         printf("Stack Underflow\n");
@@ -42,7 +42,7 @@ int pop() {
     }
     return stack[top--];
 }
-#peek fuction to point at the top value
+# fuction to point at the top value
 int peek() {
     if (top == -1) {
         printf("Stack is empty\n");
@@ -50,11 +50,11 @@ int peek() {
     }
     return stack[top];
 }
-#isempty function to check wether the function is empty
+# function to check wether the stack is empty
 int isEmpty() {
     return top == -1;
 }
-#ismin function to get the min value
+# function to get the min value
 int getMin() {
     if (top == -1) {
         printf("Stack is empty\n");
@@ -62,7 +62,7 @@ int getMin() {
     }
     return minStack[top];
 }
-#getMax function to get the max value
+# function to get the max value
 int getMax() {
     if (top == -1) {
         printf("Stack is empty\n");
@@ -70,7 +70,7 @@ int getMax() {
     }
     return maxStack[top];
 }
-#display function to display the array
+# function to display the array
 void display() {
     if (top == -1) {
         printf("Stack is empty\n");
